@@ -1,0 +1,36 @@
+{
+  "parser": "eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true,
+        "experimentalObjectRestSpread": true
+    }
+  },
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "no-unused-expressions": [1, { "allowShortCircuit": true, "allowTernary": true }],
+    "no-use-before-define": ["error", { "functions": false, "classes": true }],
+    "react/prefer-stateless-function": "disabled",
+    "function-paren-newline": ["error", "multiline"],
+    "import/prefer-default-export": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "test/**",
+          "src/**/*.test.*",
+          "webpack.config.js"
+        ]
+      }
+    ]
+  }
+}

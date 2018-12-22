@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import Router from "next/router";
-import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
-import Form from "./styles/Form";
-import formatMoney from "../lib/formatMoney";
-import Error from "./ErrorMessage";
+import React, { Component } from 'react';
+import Router from 'next/router';
+import { Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
+import Form from './styles/Form';
+import formatMoney from '../lib/formatMoney';
+import Error from './ErrorMessage';
 
 export const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
-    $title: String!,
-    $description: String!,
-    $price: Int!,
-    $image: String,
-    $largeImage: String,
+    $title: String!
+    $description: String!
+    $price: Int!
+    $image: String
+    $largeImage: String
   ) {
     createItem(
       title: $title
@@ -28,12 +28,13 @@ export const CREATE_ITEM_MUTATION = gql`
 
 class CreateItem extends Component {
   state = {
-    title: "Cool shoes",
-    description: "I love shoes",
-    image: "",
-    largeImage: "",
-    price: 10
+    title: 'Cool shoes',
+    description: 'I love shoes',
+    image: '',
+    largeImage: '',
+    price: 10,
   };
+
   handleChange = e => {
     const { name, type, value } = e.target;
     const val = type === Number ? parseFloat(value) : value;
@@ -41,23 +42,23 @@ class CreateItem extends Component {
   };
 
   uploadFile = async e => {
-    const files = e.target.files;
+    const { files } = e.target;
     const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "sickfits");
+    data.append('file', files[0]);
+    data.append('upload_preset', 'sickfits');
 
     const res = await fetch(
-      "https://api.cloudinary.com/v1_1/cloudinary9999/image/upload",
+      'https://api.cloudinary.com/v1_1/cloudinary9999/image/upload',
       {
-        method: "POST",
-        body: data
+        method: 'POST',
+        body: data,
       }
     );
 
     const file = await res.json();
     this.setState({
       image: file.secure_url,
-      largeImage: file.eager[0].secure_url
+      largeImage: file.eager[0].secure_url,
     });
   };
 
@@ -70,8 +71,8 @@ class CreateItem extends Component {
               e.preventDefault();
               const res = await createItem();
               Router.push({
-                pathname: "/item",
-                query: { id: res.data.createItem.id }
+                pathname: '/item',
+                query: { id: res.data.createItem.id },
               });
             }}
           >

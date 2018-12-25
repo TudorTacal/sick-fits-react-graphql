@@ -12,7 +12,6 @@ const SignupPage = props => (
   <Columns>
     <Signup />
     <Signin />
-    <Signup />
   </Columns>
 );
 

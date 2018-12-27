@@ -9,7 +9,6 @@ const server = createServer();
 server.express.use(cookieParser());
 
 // decode the JWT so we can get the user id on each request
-
 server.express.use((req, res, next) => {
   const { token } = req.cookies;
   if (token) {
@@ -17,6 +16,22 @@ server.express.use((req, res, next) => {
     // put the userId onto the req for future requests to access
     req.userId = userId;
   }
+  next();
+});
+
+// Create a middleware that populates the user on eatch reaquest
+
+server.express.use(async (req, res, next) => {
+  if (!req.userId) return next();
+  const user = await db.query.user(
+    {
+      where: {
+        id: req.userId,
+      },
+    },
+    '{ id, permissions, email, name }'
+  );
+  req.user = user;
   next();
 });
 

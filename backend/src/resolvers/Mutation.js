@@ -93,7 +93,7 @@ const Mutations = {
     // Check is this is a real user
     const user = await ctx.db.query.user({ where: { email: args.email } });
     if (!user) {
-      throw new Error(`No such iser found for email ${args.email}`);
+      throw new Error(`No such user found for email ${args.email}`);
     }
     // Set a reset token and expirty on that user
     const randomBytesPromisified = promisify(randomBytes);
@@ -103,13 +103,12 @@ const Mutations = {
       where: { email: args.email },
       data: { resetToken, resetTokenExpiry },
     });
-    console.log(res);
     return { message: 'Thanks!' };
     // Email them that reset token
   },
   async resetPassword(parent, args, ctx, info) {
     // Check if the passwords match
-    if (args.password !== args.confirmedPassword) {
+    if (args.password !== args.confirmPassword) {
       throw new Error("Yo Passwords don't match");
     }
     // Check if its a legit reset token

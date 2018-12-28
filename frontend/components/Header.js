@@ -1,7 +1,8 @@
-import Nav from './Nav';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { reduce } from 'async';
+import Nav from './Nav';
+import Cart from './Cart';
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -20,7 +21,7 @@ const Logo = styled.h1`
   @media (max-width: 1300px) {
     margin: 0;
     text-align: center;
-   }
+  }
 `;
 
 const StyledHeader = styled.header`
@@ -38,7 +39,7 @@ const StyledHeader = styled.header`
   .sub-bar {
     display: grid;
     grid-template-columns: 1fr auto;
-    border-bottom: 10px solid ${props => props.theme.lightGrey}
+    border-bottom: 10px solid ${props => props.theme.lightGrey};
   }
 `;
 
@@ -52,11 +53,11 @@ const Header = () => (
       </Logo>
       <Nav />
     </div>
-      <div className="sub-bar">
-        <p>Search</p>
-      </div>
-      <div>Cart</div>
-    </StyledHeader>
-    )
-    
+    <div className="sub-bar">
+      <p>Search</p>
+    </div>
+    <Cart />
+  </StyledHeader>
+);
+
 export default Header;

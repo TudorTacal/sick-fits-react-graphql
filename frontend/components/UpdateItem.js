@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import Router from "next/router";
-import { Mutation, Query } from "react-apollo";
-import gql from "graphql-tag";
-import Form from "./styles/Form";
-import formatMoney from "../lib/formatMoney";
-import Error from "./ErrorMessage";
+import React, { Component } from 'react';
+import Router from 'next/router';
+import { Mutation, Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import Form from './styles/Form';
+import formatMoney from '../lib/formatMoney';
+import Error from './ErrorMessage';
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {
@@ -39,21 +39,23 @@ export const UPDATE_ITEM_MUTATION = gql`
 
 class UpdateItem extends Component {
   state = {};
+
   handleChange = e => {
     const { name, type, value } = e.target;
     const val = type === Number ? parseFloat(value) : value;
     this.setState({ [name]: val });
   };
+
   updateItem = async (e, updateItemMutation) => {
     e.preventDefault();
-    console.log("Updating Item", this.props.id);
+    console.log('Updating Item', this.props.id);
     console.log(this.state);
 
     const res = await updateItemMutation({
       variables: {
         id: this.props.id,
-        ...this.state
-      }
+        ...this.state,
+      },
     });
   };
 

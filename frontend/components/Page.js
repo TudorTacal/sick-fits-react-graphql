@@ -43,7 +43,7 @@ injectGlobal`
 
 const StyledPage = styled.div`
   background: white;
-  color: ${props => props.theme.black};;
+  color: ${props => props.theme.black};
 `;
 
 const Inner = styled.div`

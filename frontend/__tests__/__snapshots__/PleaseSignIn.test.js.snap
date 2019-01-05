@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PleaseSignIn /> renders the child component when the user is signed in 1`] = `
+<Hey>
+  <p>
+    Hey
+  </p>
+</Hey>
+`;

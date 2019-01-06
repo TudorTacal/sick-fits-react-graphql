@@ -5,7 +5,7 @@ import Form from './styles/Form';
 import Error from './ErrorMessage';
 import { CURRENT_USER_QUERY } from './User';
 
-const SIGNUP_MUTATION = gql`
+export const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(
     $email: String!
     $name: String!
@@ -37,8 +37,7 @@ class Signup extends Component {
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
-        {(signup, { error, loading }) => {
-          return (
+        {(signup, { error, loading }) => (
             <Form
               method="post"
               onSubmit={async e => {
@@ -83,8 +82,7 @@ class Signup extends Component {
                 <button type="submit">Sign Up!</button>
               </fieldset>
             </Form>
-          );
-        }}
+          )}
       </Mutation>
     );
   }

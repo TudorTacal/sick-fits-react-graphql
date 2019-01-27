@@ -1,12 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { formatDistance } from 'date-fns';
 import Link from 'next/link';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import Error from './ErrorMessage';
-import OrderStyles from './styles/OrderStyles';
 import formatMoney from '../lib/formatMoney';
 
 import OrderItemStyles from './styles/OrderItemStyles';

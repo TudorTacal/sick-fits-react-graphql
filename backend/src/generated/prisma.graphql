@@ -1,5 +1,5 @@
-# source: https://eu1.prisma.sh/tudortacal-5fcb71/sick-fits-tudor/dev
-# timestamp: Mon Dec 31 2018 19:11:11 GMT+0000 (Greenwich Mean Time)
+# source: https://sick-fits-pro-tdr-c2c1464677.herokuapp.com/sick-fits-prod-t/prod
+# timestamp: Mon Jan 28 2019 23:37:45 GMT+0000 (GMT)
 
 type AggregateCartItem {
   count: Int!
